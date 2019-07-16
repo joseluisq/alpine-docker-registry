@@ -20,17 +20,52 @@ You can also use the image as a base for your own Dockerfile:
 FROM joseluisq/alpine-docker-registry:latest
 ```
 
-### Docker Compose
+### Docker Compose / Stack
 
 Below an example using `docker-registry` as a service:
 
 ```yml
+version: "3.3"
 
+services:
+  docker-registry:
+    restart: unless-stopped
+    image: joseluisq/alpine-docker-registry:latest
+    environment:
+      # Docker Registry env variables
+      - REGISTRY_HTTP_ADDR=0.0.0.0:5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./config.yml:/etc/docker/registry/config.yml
+      - ./.htpasswd:/etc/docker/registry/.htpasswd
+    volumes:
+      - some_registry_data:/var/lib/registry
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+    - some_network_net
+
+volumes:
+  some_registry_data:
+
+networks:
+  some_network_net:
+    external:
+      name: some_network_net
 ```
 
 ## Configuration
 
 Read to the official documentation at https://docs.docker.com/registry/configuration/
+
+## Related
+
+- Envoy / Docker Registry - https://github.com/joseluisq/envoy-docker-registry
 
 ## Contributions
 
