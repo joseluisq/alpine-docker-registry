@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.10
 
 LABEL maintainer=https://git.io/joseluisq
 
@@ -20,3 +20,11 @@ RUN chmod u+x /bin/registry \
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/etc/docker/registry/config.yml"]
+
+# Metadata
+LABEL org.opencontainers.image.vendor="Jose Quintana" \
+    org.opencontainers.image.url="https://github.com/joseluisq/alpine-docker-registry/" \
+    org.opencontainers.image.title="Alpine Docker Registry" \
+    org.opencontainers.image.description="Alpine and Docker Registry v2 x86_64 image." \
+    org.opencontainers.image.version="v1.0.0" \
+    org.opencontainers.image.documentation="https://github.com/joseluisq/alpine-docker-registry/"
