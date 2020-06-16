@@ -1,3 +1,7 @@
+> **Deprecation Notice:** This project was deprecated. Please use the official [Docker Registry Image](https://registry.hub.docker.com/_/registry/).
+
+----
+
 # Alpine / Docker Registry [![](https://images.microbadger.com/badges/image/joseluisq/alpine-docker-registry.svg)](https://microbadger.com/images/joseluisq/alpine-docker-registry "Get your own image badge on microbadger.com") [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/joseluisq/alpine-docker-registry.svg)](https://hub.docker.com/r/joseluisq/alpine-docker-registry)
 
 > [Alpine](https://hub.docker.com/_/alpine/) and [Docker Registry v2](https://hub.docker.com/_/registry) x86_64 image.
